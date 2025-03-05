@@ -10,7 +10,8 @@ vid_sample_freq = 50; % image sampling frequency (Hz)
 % Path definitions
 base_path = "./"; % base path
 data_path = base_path + "data"; % location of the video files and protocol files
-DIC_path = base_path + "analysis"; % location of the output data from DIC
+dic_path = base_path + "analysis"; % location of the output data from DIC
 
 % processing flags
 automatic_process = true; % automatic processing flag
+parallel_processing = true; % parallel processing flag
