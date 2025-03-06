@@ -9,7 +9,7 @@ spddxlcond_set = [0.04, 0.08]; % Speed conditions
 calib_folder_set = "2";
 
 % Reference trial number
-ref_trial_id = 7;
+ref_trial_id = 5;
 
 % Frame settings
 idx_frame_start = 1;

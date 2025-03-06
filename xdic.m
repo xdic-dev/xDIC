@@ -1,4 +1,4 @@
-%%% Main script for FINGERTIP 3D RECONSTRUCTION using DIC
+        %%% Main script for FINGERTIP 3D RECONSTRUCTION using DIC
 % This script is the main script for the 3D reconstruction of the fingertip
 % using DIC. It calls the analysis function and sets the parameters for the
 % analysis.
@@ -6,7 +6,7 @@
 % Run the following command in the terminal to execute this script:
 % matlab -nodisplay -nojvm -nosplash -nodesktop -r "run('xdic.m'); exit;"
 
-% clear all
+clear all
 close all
 clc
 

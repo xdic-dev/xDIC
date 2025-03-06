@@ -8,9 +8,9 @@ robot_sample_freq = 1e3; % robot sampling frequency (Hz)
 vid_sample_freq = 50; % image sampling frequency (Hz)
 
 % Path definitions
-base_path = "./"; % base path
-data_path = base_path + "data"; % location of the video files and protocol files
-dic_path = base_path + "analysis"; % location of the output data from DIC
+base_path = "E:\MATLAB\multiDIC"; % base path
+data_path = base_path + "\example_data"; % location of the video files and protocol files
+dic_path = base_path + "\xDIC\analysis"; % location of the output data from DIC
 
 % processing flags
 automatic_process = true; % automatic processing flag
