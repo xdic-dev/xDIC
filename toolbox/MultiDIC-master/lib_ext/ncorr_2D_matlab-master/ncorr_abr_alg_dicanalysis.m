@@ -136,15 +136,18 @@ function [displacements,rois_dic,seedinfo,outstate] = ncorr_abr_alg_dicanalysis(
                 else
                     % Seed analysis failed. Alert user and then ask him/her
                     % to manually place seeds.
-                    h_error = errordlg('Not a single image was seeded correctly; please replace seeds manually.','Error','modal');
-                    uiwait(h_error);
+                    %h_error = errordlg('Not a single image was seeded correctly; please replace seeds manually.','Error','modal');
+                    %uiwait(h_error);
+
+                    error('Not a single image was seeded correctly; please replace seeds manually.');
                     
                     manualseed = true;
                 end
             else
                 % Alert user
-                h_error = errordlg('One or more seeds went outside of the ROI **OR** converged on top of each other, please replace manually. If this happens often then dont place seeds near each other or near the boundary.','Error','modal');
-                uiwait(h_error);
+                %h_error = errordlg('One or more seeds went outside of the ROI **OR** converged on top of each other, please replace manually. If this happens often then dont place seeds near each other or near the boundary.','Error','modal');
+                %uiwait(h_error);
+                error('One or more seeds went outside of the ROI **OR** converged on top of each other, please replace manually. If this happens often then dont place seeds near each other or near the boundary.');
                 manualseed = true;
             end            
             
@@ -261,8 +264,9 @@ function [displacements,rois_dic,seedinfo,outstate] = ncorr_abr_alg_dicanalysis(
             % happen and is thus the only real handleable exception 
             % which will get thrown by rgdic. The last case was not
             % intended, so it is not handled here.
-            h_error = errordlg('Ncorr most likely ran out of memory while performing DIC. Please clear memory in workspace, restart Ncorr, or crop/use smaller images before doing analysis.','Error','modal');
-            uiwait(h_error);
+            %h_error = errordlg('Ncorr most likely ran out of memory while performing DIC. Please clear memory in workspace, restart Ncorr, or crop/use smaller images before doing analysis.','Error','modal');
+            %uiwait(h_error);
+            error('Ncorr most likely ran out of memory while performing DIC. Please clear memory in workspace, restart Ncorr, or crop/use smaller images before doing analysis.');
             return;
         end  
 

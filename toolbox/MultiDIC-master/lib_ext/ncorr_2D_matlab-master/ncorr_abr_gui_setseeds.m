@@ -163,8 +163,9 @@ function [seedinfo,threaddiagram,outstate] = ncorr_abr_gui_setseeds(reference,cu
                     else
                         delete(handle_point_buffer);
                         
-                        h_error = errordlg('Seed point not within region, try again.','Error','modal');     
-                        uiwait(h_error);
+                        %h_error = errordlg('Seed point not within region, try again.','Error','modal');     
+                        %uiwait(h_error);
+                        error('Seed point not within region, try again.');  
                     end 
                 else
                     % Escape was pressed - delete all points
@@ -251,8 +252,9 @@ function [seedinfo,threaddiagram,outstate] = ncorr_abr_gui_setseeds(reference,cu
         else
             % Two seeds occupy same location, tell user to move
             % generators until they occupy unique locations
-            h_error = errordlg('Two or more seeds occupy the same location, please move all seeds to unique locations.','Error','modal');
-            uiwait(h_error);
+            %h_error = errordlg('Two or more seeds occupy the same location, please move all seeds to unique locations.','Error','modal');
+            %uiwait(h_error);
+            error('Two or more seeds occupy the same location, please move all seeds to unique locations.');
         end
     end
 

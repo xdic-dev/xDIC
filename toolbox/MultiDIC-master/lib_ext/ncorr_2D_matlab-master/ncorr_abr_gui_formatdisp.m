@@ -316,8 +316,9 @@ function [plots_disp_f,rois_f,pixtounits,units,cutoff_corrcoef,lenscoef,outstate
                 corrcoef_buffer(i+1,1) = corrcoef_prelim;
             end             
         else
-            h_error = errordlg(['Value is below the minimum allowed: ' num2str(max(corrcoef_buffer(:,3)))  '.'],'Error','modal');
-            uiwait(h_error);
+            %h_error = errordlg(['Value is below the minimum allowed: ' num2str(max(corrcoef_buffer(:,3)))  '.'],'Error','modal');
+            %uiwait(h_error);
+            error('Value is below the minimum allowed: %s', num2str(max(corrcoef_buffer(:,3))));
         end  
         
         % Set data; there's no need for an update since the other plots arent shown

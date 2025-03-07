@@ -885,8 +885,9 @@ classdef ncorr_abr < handle
                 end
             else
                 % Handle already exists
-                e = msgbox(['Handle already exists and is called: ' name],'WindowStyle','modal'); 
-                uiwait(e);
+                %e = msgbox(['Handle already exists and is called: ' name],'WindowStyle','modal'); 
+                %uiwait(e);
+                fprintf('Handle already exists and is called: %s', name)
             end    
         end
         
@@ -1758,7 +1759,8 @@ classdef ncorr_abr < handle
             obj.data_dic.straininfo(1).subsettrunc = subsettrunc_prelim;
 
             % Tell user calculating strains was successful
-            msgbox('Strains calculation complete. Press ok to finish.','WindowStyle','modal');
+            %msgbox('Strains calculation complete. Press ok to finish.','WindowStyle','modal');
+            fprintf('Strains calculation complete.')
         end
         
         function callback_topmenu_viewplot(obj,hObject,eventdata,type_fig) %#ok<INUSL>
@@ -2667,8 +2669,9 @@ classdef ncorr_abr < handle
             if (compile)                
                 % One of the compiled files is missing - tell user that ncorr
                 % will recompile files.
-                e = msgbox('One of the compiled files is missing. If using automatic installation, then mex files will compile; if using manual installation, please close Ncorr and make sure all the files compiled properly.','WindowStyle','modal'); 
-                uiwait(e);
+                %e = msgbox('One of the compiled files is missing. If using automatic installation, then mex files will compile; if using manual installation, please close Ncorr and make sure all the files compiled properly.','WindowStyle','modal'); 
+                fprintf(">>>>One of the compiled files is missing. If using automatic installation, then mex files will compile; if using manual installation, please close Ncorr and make sure all the files compiled properly.")
+                %uiwait(e);
             end
 
             if (~compile)
@@ -2702,8 +2705,9 @@ classdef ncorr_abr < handle
                     elseif (isempty(ncorr_installinfo))
                         % ncorr_installinfo is empty, this is the stanard
                         % way to reinstall Ncorr.
-                        h_error = msgbox('"ncorr_installinfo.txt" file is empty. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','WindowStyle','modal'); 
-                        uiwait(h_error);
+                        %h_error = msgbox('"ncorr_installinfo.txt" file is empty. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','WindowStyle','modal'); 
+                        %uiwait(h_error);
+                        error('"ncorr_installinfo.txt" file is empty. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.'); 
                         
                         % recompile files
                         compile = true;
@@ -2719,9 +2723,10 @@ classdef ncorr_abr < handle
                 catch %#ok<CTCH>
                     % Returns error if file does not exist or format is
                     % wrong
-                    h_error = msgbox('For some reason the "ncorr_installinfo.txt" file is missing or has improper format. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','WindowStyle','modal'); 
-                    uiwait(h_error);
-                    
+                    %h_error = msgbox('For some reason the "ncorr_installinfo.txt" file is missing or has improper format. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','WindowStyle','modal'); 
+                    %uiwait(h_error);
+                    error('For some reason the "ncorr_installinfo.txt" file is missing or has improper format. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.'); 
+
                     % recompile files
                     compile = true;
                 end    

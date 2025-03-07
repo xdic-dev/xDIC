@@ -78,9 +78,10 @@ function [plots_disp_new,rois_new,outstate] = ncorr_alg_convertanalysis(img_new,
         if (outstate_convertseeds ~= out.success)
             % For now just fail the whole analysis since this will result 
             % in an empty plot.
-            h_error = errordlg('Seeding failed for the conversion analysis. Please rerun DIC analysis and make sure regions have a large contiguous region.','Error','modal');
-            uiwait(h_error);
-            
+            %h_error = errordlg('Seeding failed for the conversion analysis. Please rerun DIC analysis and make sure regions have a large contiguous region.','Error','modal');
+            %uiwait(h_error);
+            error('Seeding failed for the conversion analysis. Please rerun DIC analysis and make sure regions have a large contiguous region.');
+
             outstate = out.failed;
             break;
         end

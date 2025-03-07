@@ -188,8 +188,9 @@ function [seedinfo,threaddiagram,outstate] = ncorr_abr_gui_seedanalysis(referenc
                     % place it again.
                     % ABR %delete(handle_point);
                     
-                    h_error = errordlg('Point not within ROI, try again.','Error','modal');    
-                    uiwait(h_error);
+                    %h_error = errordlg('Point not within ROI, try again.','Error','modal');    
+                    %uiwait(h_error);
+                    error('Point not within ROI, try again.');
                 end  
             else
                 % Escaped was pressed. 

@@ -155,8 +155,10 @@ function [seedinfo,outstate] = ncorr_abr_gui_seedpreview(reference,current,roi,n
             % ABR - END
 
         elseif (outstate_seeds == out.failed)
-            h_error = errordlg('Seed placement failed; please replace seeds.','Error','modal');
-            uiwait(h_error);
+            %h_error = errordlg('Seed placement failed; please replace seeds.','Error','modal');
+            %uiwait(h_error);
+            error('Seed placement failed; please replace seeds.');
+
 
             outstate = out.failed;
                 

@@ -494,8 +494,9 @@ classdef ncorr_abr < handle
                         end
                         setappdata(obj.handles_gui.figure,'num_cur',length(cur_prelim)-1);
                     catch %#ok<CTCH>
-                        h_error = errordlg('Loading current images failed, most likely because Ncorr ran out of memory.','Error','modal');  
-                        uiwait(h_error);
+                        %h_error = errordlg('Loading current images failed, most likely because Ncorr ran out of memory.','Error','modal');  
+                        %uiwait(h_error);
+                        error('Loading current images failed, most likely because Ncorr ran out of memory.');  
                         
                         % Clear all current images because exception could have
                         % been thrown midway through setting current images
@@ -504,8 +505,9 @@ classdef ncorr_abr < handle
                     end
                 end
             else
-                h_error = errordlg('Loading current images failed because the image data format was incorrect.','Error','modal');  
-                uiwait(h_error);
+                %h_error = errordlg('Loading current images failed because the image data format was incorrect.','Error','modal');  
+                %uiwait(h_error);
+                error('Loading current images failed because the image data format was incorrect.');  
             end
         end
         
@@ -563,16 +565,19 @@ classdef ncorr_abr < handle
                             end
                         end
                     else
-                        h_error = errordlg('ROI must contain a large contiguous region.','Error','modal');
-                        uiwait(h_error);
+                        %h_error = errordlg('ROI must contain a large contiguous region.','Error','modal');
+                        %uiwait(h_error);
+                        error('ROI must contain a large contiguous region.');
                     end 
                 else
-                    h_error = errordlg('Input must be of class logical and the same size as the reference image','Error','modal');
-                    uiwait(h_error);
+                    %h_error = errordlg('Input must be of class logical and the same size as the reference image','Error','modal');
+                    %uiwait(h_error);
+                    error('Input must be of class logical and the same size as the reference image');
                 end
             else
-                h_error = errordlg('Reference image has not been loaded yet','Error','modal');
-                uiwait(h_error);
+                %h_error = errordlg('Reference image has not been loaded yet','Error','modal');
+                %uiwait(h_error);
+                error('Reference image has not been loaded yet');
             end
         end     
         
@@ -623,16 +628,19 @@ classdef ncorr_abr < handle
                             end
                         end
                     else
-                        h_error = errordlg('ROI must contain a large contiguous region.','Error','modal');
-                        uiwait(h_error);
+                        %h_error = errordlg('ROI must contain a large contiguous region.','Error','modal');
+                        %uiwait(h_error);
+                        error('ROI must contain a large contiguous region.')
                     end 
                 else
-                    h_error = errordlg('Input must be of class logical and the same size as the last current image','Error','modal');
-                    uiwait(h_error);
+                    %h_error = errordlg('Input must be of class logical and the same size as the last current image','Error','modal');
+                    %uiwait(h_error);
+                    error('Input must be of class logical and the same size as the last current image');
                 end
             else
-                h_error = errordlg('Current image(s) have not been loaded yet.','Error','modal');
-                uiwait(h_error);
+                %h_error = errordlg('Current image(s) have not been loaded yet.','Error','modal');
+                %uiwait(h_error);
+                error('Current image(s) have not been loaded yet.')
             end
         end       
         
@@ -658,8 +666,9 @@ classdef ncorr_abr < handle
                     obj.reference(1).roi = ncorr_class_roi.empty;
                 end
             elseif (outstate == out.success && length(ref_prelim) > 1)
-                h_error = errordlg('Please select only one reference image.','Error','modal');  
-                uiwait(h_error);
+                %h_error = errordlg('Please select only one reference image.','Error','modal');  
+                %uiwait(h_error);
+                error('Please select only one reference image.');  
             end
         end
 
@@ -762,12 +771,14 @@ classdef ncorr_abr < handle
                                             if (length(struct_load.current_save) > max_display)
                                                 msg_error{end+1} = '...';
                                             end
-                                            h_error = errordlg(msg_error,'Error','modal');   
-                                            uiwait(h_error);
+                                            %h_error = errordlg(msg_error,'Error','modal');   
+                                            %uiwait(h_error);
+                                            error(msg_error)
                                         end
                                     catch %#ok<CTCH>
-                                        h_error = errordlg('Loading failed, most likely because Ncorr ran out of memory.','Error','modal');  
-                                        uiwait(h_error);
+                                        %h_error = errordlg('Loading failed, most likely because Ncorr ran out of memory.','Error','modal');  
+                                        %uiwait(h_error);
+                                        error('Loading failed, most likely because Ncorr ran out of memory.');  
 
                                         % Clear everything - its possible
                                         % exception was caught while
@@ -782,20 +793,24 @@ classdef ncorr_abr < handle
                                     end
                                 end
                             else                                   
-                                h_error = errordlg('The data is not valid, please load data saved specifically from ncorr.','Error','modal');  
-                                uiwait(h_error);
+                                %h_error = errordlg('The data is not valid, please load data saved specifically from ncorr.','Error','modal');  
+                                %uiwait(h_error);
+                                error('The data is not valid, please load data saved specifically from ncorr.');  
                             end
                         else         
-                            h_error = errordlg('The data is not valid, please load data saved specifically from ncorr.','Error','modal');   
-                            uiwait(h_error);
+                            %h_error = errordlg('The data is not valid, please load data saved specifically from ncorr.','Error','modal');   
+                            %uiwait(h_error);
+                            error('The data is not valid, please load data saved specifically from ncorr.');   
                         end
                     else
-                        h_error = errordlg('The data is not valid, please load data saved specifically from ncorr.','Error','modal');
-                        uiwait(h_error);
+                        %h_error = errordlg('The data is not valid, please load data saved specifically from ncorr.','Error','modal');
+                        %uiwait(h_error);
+                        error('The data is not valid, please load data saved specifically from ncorr.');
                     end
                 else
-                    h_error = errordlg('Loading failed, most likely because Ncorr ran out of memory.','Error','modal');  
-                    uiwait(h_error);
+                    %h_error = errordlg('Loading failed, most likely because Ncorr ran out of memory.','Error','modal');  
+                    %uiwait(h_error);
+                    error('Loading failed, most likely because Ncorr ran out of memory.');  
                 end
             end            
         end
@@ -859,8 +874,9 @@ classdef ncorr_abr < handle
                     catch %#ok<CTCH>
                         % If saving fails, its generally because the files
                         % are too large.
-                        h_error = errordlg('Saving failed, probably because the amount of data being saved is too large.','Error','modal');
-                        uiwait(h_error);
+                        %h_error = errordlg('Saving failed, probably because the amount of data being saved is too large.','Error','modal');
+                        %uiwait(h_error);
+                        error('Saving failed, probably because the amount of data being saved is too large.');
                     end
                 end
             end
@@ -885,8 +901,10 @@ classdef ncorr_abr < handle
                 end
             else
                 % Handle already exists
-                e = msgbox(['Handle already exists and is called: ' name],'WindowStyle','modal'); 
-                uiwait(e);
+                %e = msgbox(['Handle already exists and is called: ' name],'WindowStyle','modal'); 
+                %uiwait(e);
+                %TODO: maybe an error message?
+                fprintf('Handle already exists and is called: %s\n', name)
             end    
         end
         
@@ -921,14 +939,16 @@ classdef ncorr_abr < handle
                         end
                     else
                         % Error
-                        h_error = errordlg('For some reason ncorr was not able to clear "ncorr_installinfo.txt" file, reinstall cannot take place.','Error','modal');                    
-                        uiwait(h_error);
+                        %h_error = errordlg('For some reason ncorr was not able to clear "ncorr_installinfo.txt" file, reinstall cannot take place.','Error','modal');                    
+                        %uiwait(h_error);
+                        error('For some reason ncorr was not able to clear "ncorr_installinfo.txt" file, reinstall cannot take place.');
                     end   
                 end
             else
                 % Error
-                h_error = errordlg('Please navigate to folder containing ncorr.m first before reinstalling.','Error','modal');                    
-                uiwait(h_error);
+                %h_error = errordlg('Please navigate to folder containing ncorr.m first before reinstalling.','Error','modal');                    
+                %uiwait(h_error);
+                error('Please navigate to folder containing ncorr.m first before reinstalling.');
             end
         end
 
@@ -1367,7 +1387,8 @@ classdef ncorr_abr < handle
 
                 % Tell user analysis is done
                 if (obj.showGui)
-                    msgbox('DIC Analysis completed successfully. Press ok to finish.','WindowStyle','modal');
+                    %msgbox('DIC Analysis completed successfully. Press ok to finish.','WindowStyle','modal');
+                    disp('DIC Analysis completed successfully.')
                 end
             end    
 
@@ -1758,7 +1779,8 @@ classdef ncorr_abr < handle
             obj.data_dic.straininfo(1).subsettrunc = subsettrunc_prelim;
 
             % Tell user calculating strains was successful
-            msgbox('Strains calculation complete. Press ok to finish.','WindowStyle','modal');
+            %msgbox('Strains calculation complete. Press ok to finish.','WindowStyle','modal');
+            disp('Strains calculation complete.')
         end
         
         function callback_topmenu_viewplot(obj,hObject,eventdata,type_fig) %#ok<INUSL>
@@ -2590,8 +2612,9 @@ classdef ncorr_abr < handle
             vm = datevec(version('-date'));
             if (vm(1) < 2009)
                 % Pop error message but allow user to continue
-                h_error = errordlg('Developed using MATLAB 2009; may not work for versions before this date. Ncorr will continue.','Error','modal');
-                uiwait(h_error);
+                %h_error = errordlg('Developed using MATLAB 2009; may not work for versions before this date. Ncorr will continue.','Error','modal');
+                %uiwait(h_error);
+                error('Developed using MATLAB 2009; may not work for versions before this date. Ncorr will continue.');
             end
             
             % Check to make sure correct toolboxes are installed ---------%
@@ -2602,8 +2625,9 @@ classdef ncorr_abr < handle
             % for both cases.
             v = ver;
             if (isempty(strfind([v.Name],'Image Processing Toolbox')) || isempty(strfind([v.Name],'Statistics')))  %#ok<STREMP>
-                h_error = errordlg('Requires the image processing and statistics toolbox.','Error','modal');
-                uiwait(h_error);                
+                %h_error = errordlg('Requires the image processing and statistics toolbox.','Error','modal');
+                %uiwait(h_error);                
+                error('Requires the image processing and statistics toolbox.');
                 return;
             end
                         
@@ -2667,8 +2691,9 @@ classdef ncorr_abr < handle
             if (compile)                
                 % One of the compiled files is missing - tell user that ncorr
                 % will recompile files.
-                e = msgbox('One of the compiled files is missing. If using automatic installation, then mex files will compile; if using manual installation, please close Ncorr and make sure all the files compiled properly.','WindowStyle','modal'); 
-                uiwait(e);
+                %e = msgbox('One of the compiled files is missing. If using automatic installation, then mex files will compile; if using manual installation, please close Ncorr and make sure all the files compiled properly.','WindowStyle','modal'); 
+                error(">>>>One of the compiled files is missing. If using automatic installation, then mex files will compile; if using manual installation, please close Ncorr and make sure all the files compiled properly.")
+                %uiwait(e);
             end
 
             if (~compile)
@@ -2693,8 +2718,9 @@ classdef ncorr_abr < handle
                             obj.total_cores = ncorr_installinfo(2);
                         else
                             % ncorr_installinfo.txt has incorrect values
-                            h_error = errordlg('For some reason "ncorr_installinfo.txt" has incorrect values. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','Error','modal');
-                            uiwait(h_error);
+                            %h_error = errordlg('For some reason "ncorr_installinfo.txt" has incorrect values. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','Error','modal');
+                            %uiwait(h_error);
+                            error('For some reason "ncorr_installinfo.txt" has incorrect values. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.');
                             
                             % recompile files
                             compile = true;
@@ -2702,16 +2728,20 @@ classdef ncorr_abr < handle
                     elseif (isempty(ncorr_installinfo))
                         % ncorr_installinfo is empty, this is the stanard
                         % way to reinstall Ncorr.
-                        h_error = msgbox('"ncorr_installinfo.txt" file is empty. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','WindowStyle','modal'); 
-                        uiwait(h_error);
+                        %h_error = msgbox('"ncorr_installinfo.txt" file is empty. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','WindowStyle','modal'); 
+                        %uiwait(h_error);
+
+                        error('"ncorr_installinfo.txt" file is empty. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.'); 
                         
                         % recompile files
                         compile = true;
                     else
                         % ncorr_installinfo.txt has extra values which
                         % aren't supposed to be there
-                        h_error = errordlg('For some reason the "ncorr_installinfo.txt" file has extra or missing values. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','Error','modal');
-                        uiwait(h_error);
+                        %h_error = errordlg('For some reason the "ncorr_installinfo.txt" file has extra or missing values. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','Error','modal');
+                        %uiwait(h_error);
+                        disp('For some reason the "ncorr_installinfo.txt" file has extra or missing values. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.');
+                        disp('Trying to recompile...')
                         
                         % recompile files
                         compile = true;
@@ -2719,9 +2749,9 @@ classdef ncorr_abr < handle
                 catch %#ok<CTCH>
                     % Returns error if file does not exist or format is
                     % wrong
-                    h_error = msgbox('For some reason the "ncorr_installinfo.txt" file is missing or has improper format. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','WindowStyle','modal'); 
-                    uiwait(h_error);
-                    
+                    %h_error = msgbox('For some reason the "ncorr_installinfo.txt" file is missing or has improper format. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.','WindowStyle','modal'); 
+                    %uiwait(h_error);
+                    error('For some reason the "ncorr_installinfo.txt" file is missing or has improper format. Program will recompile if using automatic installing. If manually installing Ncorr, please close it and make sure the "ncorr_installinfo.txt" was created correctly.'); 
                     % recompile files
                     compile = true;
                 end    
@@ -2786,16 +2816,18 @@ classdef ncorr_abr < handle
                                 else
                                     % C++ compiler is set up, but was not
                                     % recognized as either gcc or cl
-                                    h_error = errordlg('C++ compiler is set up in mex, but was not recognized as G++ or Visual Studio. Either comment out the compile section in ncorr and manually compile the mex functions, or restart ncorr and disable openmp support.','Error','modal');
-                                    uiwait(h_error);
+                                    %h_error = errordlg('C++ compiler is set up in mex, but was not recognized as G++ or Visual Studio. Either comment out the compile section in ncorr and manually compile the mex functions, or restart ncorr and disable openmp support.','Error','modal');
+                                    %uiwait(h_error);
+                                    fprintf('C++ compiler is set up in mex, but was not recognized as G++ or Visual Studio. Either comment out the compile section in ncorr and manually compile the mex functions, or restart ncorr and disable openmp support.');
                                     
                                     outstate = out.failed;
                                     return;
                                 end                                
                             else
                                 % C++ compiler not installed in mex. 
-                                h_error = errordlg('C++ compiler was not found. If a C++ compiler was manually installed that supports openmp, then either comment out the compile section in ncorr and manually compile the functions or restart ncorr and disable openmp.','Error','modal');
-                                uiwait(h_error);
+                                %h_error = errordlg('C++ compiler was not found. If a C++ compiler was manually installed that supports openmp, then either comment out the compile section in ncorr and manually compile the functions or restart ncorr and disable openmp.','Error','modal');
+                                %uiwait(h_error);
+                                fprintf('C++ compiler was not found. If a C++ compiler was manually installed that supports openmp, then either comment out the compile section in ncorr and manually compile the functions or restart ncorr and disable openmp.');
                                 
                                 outstate = out.failed;
                                 return;
@@ -2825,24 +2857,27 @@ classdef ncorr_abr < handle
                             obj.total_cores = total_cores_prelim;
                         else
                             % Error
-                            h_error = errordlg('For some reason ncorr was not able to create "ncorr_installinfo.txt" file.','Error','modal');
-                            uiwait(h_error);
+                            %h_error = errordlg('For some reason ncorr was not able to create "ncorr_installinfo.txt" file.','Error','modal');
+                            %uiwait(h_error);
+                            fprintf('For some reason ncorr was not able to create "ncorr_installinfo.txt" file.');
                             
                             outstate = out.failed;
                             return;
                         end
                     else
                         % Error
-                        h_error = errordlg('Please navigate to folder containing ncorr.m first before reinstalling.','Error','modal');                    
-                        uiwait(h_error);                        
+                        %h_error = errordlg('Please navigate to folder containing ncorr.m first before reinstalling.','Error','modal');                    
+                        %uiwait(h_error);                        
+                        fprintf('Please navigate to folder containing ncorr.m first before reinstalling.');
                         
                         outstate = out.failed;
                         return;
                     end    
                 end    
             catch %#ok<CTCH>
-                h_error = errordlg('Files did not compile properly. Make sure mex has a c++ compiler set and that the file names have not been altered or moved. If this is the case, then try reopening and installing ncorr without openmp. If problems persist, then try commenting out the compile section in ncorr and manually compiling the functions. Instructions for compilation are available in the manual at ncorr.com','Error','modal');
-                uiwait(h_error);
+                %h_error = errordlg('Files did not compile properly. Make sure mex has a c++ compiler set and that the file names have not been altered or moved. If this is the case, then try reopening and installing ncorr without openmp. If problems persist, then try commenting out the compile section in ncorr and manually compiling the functions. Instructions for compilation are available in the manual at ncorr.com','Error','modal');
+                %uiwait(h_error);
+                fprintf('Files did not compile properly. Make sure mex has a c++ compiler set and that the file names have not been altered or moved. If this is the case, then try reopening and installing ncorr without openmp. If problems persist, then try commenting out the compile section in ncorr and manually compiling the functions. Instructions for compilation are available in the manual at ncorr.com');
                 
                 outstate = out.failed;
                 return;
@@ -2858,8 +2893,10 @@ classdef ncorr_abr < handle
                 if (~ncorr_alg_testopenmp())
                     % openmp was enabled and files were compiled, but openmp
                     % isn't actually supported.
-                    h_error = errordlg('Files compiled, but it was determined that OpenMP is not actually supported. Please reinstall Ncorr in single threaded mode or use a compiler which supports OpenMP.','Error','modal');
-                    uiwait(h_error);
+                    %h_error = errordlg('Files compiled, but it was determined that OpenMP is not actually supported. Please reinstall Ncorr in single threaded mode or use a compiler which supports OpenMP.','Error','modal');
+                    %uiwait(h_error);
+
+                    fprintf('Files compiled, but it was determined that OpenMP is not actually supported. Please reinstall Ncorr in single threaded mode or use a compiler which supports OpenMP.');
 
                     outstate = out.failed;
                     return;
@@ -3492,8 +3529,9 @@ function [handle_name,outstate] = gui_sethandle(pos_parent)
         if (isvarname(handle_name_buffer))   
             handle_name_prelim = handle_name_buffer;
         else
-            h_error = errordlg('Not a valid variable name.','Error','modal');
-            uiwait(h_error);
+            %h_error = errordlg('Not a valid variable name.','Error','modal');
+            %uiwait(h_error);
+            error('Not a valid variable name.');
         end
 
         % Set Data

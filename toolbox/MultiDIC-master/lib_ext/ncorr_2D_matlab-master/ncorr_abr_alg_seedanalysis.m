@@ -95,8 +95,9 @@ function [seedinfo,convergence,outstate] = ncorr_abr_alg_seedanalysis(reference,
             % Step analysis isn't enabled. If any seed placements fail then
             % fail the whole analysis
             if (outstate_seeds ~= out.success)
-                h_error = errordlg('Some seeds could not be analyzed. If high strain is anticipated, then try enabling the high strain step analysis.','Error','modal');
-                uiwait(h_error);
+                %h_error = errordlg('Some seeds could not be analyzed. If high strain is anticipated, then try enabling the high strain step analysis.','Error','modal');
+                %uiwait(h_error);
+                error('Some seeds could not be analyzed. If high strain is anticipated, then try enabling the high strain step analysis.');
                 
                 outstate = out.failed;
                 break;
