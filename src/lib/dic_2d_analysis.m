@@ -1,11 +1,11 @@
-function  dic_2d_analysis(trial_target, data_path, dic_path, subject_id, phase_id, material, num_pair, nfcond_set, spddxlcond_set, calib_folder_set, ref_trial_id, idx_frame_start, idx_frame_end, frame_jump, showvisu, debug_mode, automatic_process)
+function output = dic_2d_analysis(trial_target, data_path, dic_path, subject_id, phase_id, material, num_pair, nfcond_set, spddxlcond_set, calib_folder_set, ref_trial_id, idx_frame_start, idx_frame_end, frame_jump, showvisu, debug_mode, automatic_process)
     fprintf('Begin of %s\n', mfilename);
     % Flatten all combinations (trial_jj, stereopair_kk)
     pairs_trials = combvec( 1:num_pair, trial_target)';
 
     % parfor over the flattened set of combinations
     output = cell(size(pairs_trials, 1), 1);
-    for i = 1:size(pairs_trials, 1)
+    parfor i = 1:size(pairs_trials, 1)
         pair_id = pairs_trials(i, 1);
         trial_id = pairs_trials(i, 2);
         fprintf('Trial ID: %d, Pair ID: %d\n', trial_id, pair_id);
@@ -24,8 +24,7 @@ function  dic_2d_analysis(trial_target, data_path, dic_path, subject_id, phase_i
             'reftrial_setmanual', sprintf("%03d", ref_trial_id), ...
             'jump', frame_jump, ...
             'automatic_process', automatic_process);
-	output{i} = [o1, o2, o3];
+        output{i} = [o1, o2, o3];
     end
-    disp(output);
     fprintf('End of %s\n', mfilename);
 end
