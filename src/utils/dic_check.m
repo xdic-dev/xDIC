@@ -32,4 +32,11 @@ if isempty(dir(protocol_path))
     error('Error: Protocol not found.\n');
 end
 
+calib_path = fullfile(fullfile(dic_path,subject_id,"calib", calib_folder_set,sprintf('*cam_*.mat')));
+if isempty(dir(calib_path))
+    fprintf("These files %s must exist to be able to run DIC analysis useful for 3D reconstruction.\n", calib_path)
+    fprintf("These files come from xxx process you can run it using this command or just copy from previous experience into the right place.\n")
+    error('Error: Calib files not found.\n');
+end
+
 disp('...done Checking.');
