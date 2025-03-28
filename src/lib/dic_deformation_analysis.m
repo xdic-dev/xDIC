@@ -8,7 +8,7 @@ function dic_deformation_analysis(file_reconstruction, output_2d, trial_target, 
         tic;
 
         % Deformation analysis
-        stepF_Deformation('basePath', output_2d{i,1}, ...
+        stepF_Deformation('basePath', output_2d{i}{1}, ...
             'target_file', file_reconstruction{i});
             
         elapsed_time = toc; 
