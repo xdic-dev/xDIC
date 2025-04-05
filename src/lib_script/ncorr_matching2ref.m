@@ -1,12 +1,13 @@
-function ncorr_matching2ref(im2match,base_parameters,ncorr_parameters)
+function ncorr_matching2ref(im2match,prep_params,ncorr_parameters)
 
 disp('Ncorr matching run'); 
+base_parameters = prep_params.base_parameters;
 
 %% Load images
 [cam_first_raw,~] = import_vid(base_parameters.baseDataPath,...
                     'subject',base_parameters.subject,...
                     'material',base_parameters.material,...
-                    'trial',base_parameters.reftrial,...
+                    'trial', base_parameters.reftrial_setmanual,...
                     'stereopair',base_parameters.stereopair,...
                     'phase',base_parameters.phase,...
                     'idxstart_set',base_parameters.idxstart_set,...
@@ -16,14 +17,17 @@ disp('Ncorr matching run');
 cam_first = cam_first_raw;
 
 %% REFERENCE ROI 
-refmask = load(base_parameters.roifile); 
+disp(prep_params.roifile); 
+% Check if the path is correct
+assert(isfile(prep_params.roifile), 'File not found.');
+refmask = load(prep_params.roifile); 
 refmask = refmask.refmask;
 
 %% Run ncorr 
 %Choose automatic or semi automatic analysis
 
-if exist(base_parameters.seedfile,'file') 
-    seed_point = load(base_parameters.seedfile); 
+if exist(prep_params.seedfile,'file') 
+    seed_point = load(prep_params.seedfile); 
     seed_point = seed_point.seed_point;
     showGui = false; 
 else 
