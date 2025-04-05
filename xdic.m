@@ -37,7 +37,7 @@ disp('Checking the data and protocol...');
 dic_check;
 
 % call analysis function
-dic_analysis(data_path, dic_path, subject_id, phase_id, material, num_pair, nfcond_set, spddxlcond_set, calib_folder_set, ref_trial_id, idx_frame_start, idx_frame_end, frame_jump, showvisu, debug_mode, automatic_process);
+dic_analysis(data_path, dic_path);
 
 % end
 disp('End of script');
