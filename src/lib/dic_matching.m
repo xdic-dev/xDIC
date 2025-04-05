@@ -5,16 +5,11 @@ step1_2_parameters = prep_params.step1_2_parameters;
 cam_data = prep_params.cam_data;
 
 % Define file paths
-roifile = fullfile(base_parameters.baseResultPath, base_parameters.subject, ...
-    base_parameters.material, sprintf("REF_MASK_%s_%s_pair%d.mat", ...
-    prep_params.reftrial, base_parameters.phase, base_parameters.stereopair));
+roifile = prep_params.roifile;
 
-matchingfile = fullfile(prep_params.outputPath, ...
-    sprintf("MATCHING2%s_pair%d.mat", prep_params.reftrial, base_parameters.stereopair));
+matchingfile = prep_params.matchingfile;
 
-seedfile = fullfile(base_parameters.baseResultPath, base_parameters.subject, ...
-    base_parameters.material, sprintf("REF_SEED_%s_%s_pair%d.mat", ...
-    prep_params.reftrial, base_parameters.phase, base_parameters.stereopair));
+seedfile = prep_params.seedfile;
 
 %% ROI and Seed initialization
 % Draw ROI if needed
@@ -24,7 +19,7 @@ end
 
 % Perform matching if needed
 if ~exist(matchingfile, 'file')
-    ncorr_matching2ref(cam_data.first_satur(:,:,1), base_parameters, step1_2_parameters);
+    ncorr_matching2ref(cam_data.first_satur(:,:,1), prep_params, step1_2_parameters);
 end
 
 % Load matching results
