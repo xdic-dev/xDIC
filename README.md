@@ -1,7 +1,21 @@
 # xDIC: Fingertip 3D Reconstruction
 
-[![Documentation](https://github.com/xdic-dev/xdic-dev.github.io/actions/workflows/docs.yml/badge.svg)](https://xdic-dev.github.io)
+| **Documentation and paper** | **Build Status** |
+|:-----------------:|:----------------:|
+| [![DOI][paper-img]][paper-url] [![][docs-latest-img]][docs-latest-url]  [![][docs-stable-img]][docs-stable-url]        | [![Build Status][build-img]][build-url]  [![Codecov branch][codecov-img]][codecov-url]      |
 
+
+[docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
+[docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
+[docs-stable-url]: https://xdic-dev.github.io/xdic-dev.github.io/stable
+[docs-latest-url]: https://xdic-dev.github.io/xdic-dev.github.io/dev
+[paper-img]: https://proceedings.juliacon.org/papers/10.21105/jcon.00160/status.svg
+[paper-url]: https://www.biorxiv.org/content/10.1101/2025.02.10.637366v1.full.pdf
+
+[build-img]: https://github.com/xdic-dev/xdic-dev.github.io/actions/workflows/docs.yml/badge.svg?branch=main
+[build-url]: https://github.com/xdic-dev/xdic-dev.github.io/actions?query=workflow%3ADocumentation
+[codecov-img]: https://codecov.io/github/xdic-dev/xdic-dev.github.io/coverage.svg
+[codecov-url]: https://app.codecov.io/github/xdic-dev/xdic-dev.github.io
 
 ## How to run this app?
 
