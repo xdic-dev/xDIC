@@ -15,8 +15,51 @@ disp('FINGERTIP 3D RECONSTRUCTION using DIC');
 disp('--------------------------------------');
 disp('DIC analysis for the fingertip');
 
-% Add path
+% Add paths
 addpath(genpath(pwd));
+
+% Add ncorr path and cd to it for initialization
+ncorr_path = fullfile(pwd, 'toolbox', 'MultiDIC-master', 'lib_ext', 'ncorr_2D_matlab-master');
+addpath(ncorr_path);
+current_dir = pwd;
+cd(ncorr_path);
+
+% Ensure workers have access to the code
+if ~isempty(gcp('nocreate'))
+    delete(gcp('nocreate'));
+end
+parpool('local');
+
+% Attach all necessary files to the parallel pool
+lib_files = {...
+    'compute_initial_seed_points.m', ...
+    'compute_matching.m', ...
+    'compute_tracking.m', ...
+    'dic_2d_analysis.m', ...
+    'dic_3d_reconstruction.m', ...
+    'dic_deformation_analysis.m', ...
+    'stepD_2DDIC.m', ...
+    'stepE_3DReconstruction.m', ...
+    'stepF_Deformation.m' ...
+};
+
+for i = 1:length(lib_files)
+    lib_files{i} = fullfile(current_dir, 'src', 'lib', lib_files{i});
+end
+
+% Add ncorr files
+ncorr_files = dir(fullfile(ncorr_path, '*.m'));
+for i = 1:length(ncorr_files)
+    lib_files{end+1} = fullfile(ncorr_files(i).folder, ncorr_files(i).name);
+end
+
+% Attach files and update path on workers
+addAttachedFiles(gcp, lib_files);
+parfevalOnAll(gcp, @(p) cd(p), 1, ncorr_path);
+parfevalOnAll(gcp, @(p) addpath(p, genpath(p)), 1, ncorr_path);
+
+% Return to original directory
+cd(current_dir);
 
 % Load configurations
 global_param;

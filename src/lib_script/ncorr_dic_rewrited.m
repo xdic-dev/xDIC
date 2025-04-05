@@ -32,15 +32,14 @@ if (isfield(step_param, "initial_seed"))
 else
      initial_seed = [];
 end
-showGui = ~automatic_process; 
-handles = ncorr_abr(showGui,initial_seed);
-% handles = ncorr;
+% Use ncorr instead of ncorr_abr for parallel processing
+handles = ncorr;
 handles.set_ref(cam_data_ref);
 handles.set_cur(Myarray2cell(cam_data_cur));
 
 handles.set_roi_ref(mask);
 
-
+% Set DIC parameters
 handles.set_dic_parameters_manually( ...
     step_param.type, ...
     step_param.radius, ...
