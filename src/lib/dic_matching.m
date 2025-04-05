@@ -1,4 +1,14 @@
 function [matching_results] = dic_matching(prep_params)
+% DIC_MATCHING Perform matching between image pairs
+%   This function handles the matching process between image pairs,
+%   including ROI and seed initialization.
+%
+% Parameters:
+%   prep_params: Structure containing prepared data and parameters
+%
+% Returns:
+%   matching_results: Structure containing matching analysis results
+
 % Get required parameters
 base_parameters = prep_params.base_parameters;
 step1_2_parameters = prep_params.step1_2_parameters;

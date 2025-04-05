@@ -1,5 +1,5 @@
 
-function varargout = stepD_2DDIC(varargin)
+function varargout = stepD_2DDIC(base_data_path, base_result_path)
 % STEPD_2DDIC Main function for Digital Image Correlation analysis
 %   This function orchestrates the DIC analysis pipeline by:
 %   1. Preparing data and parameters (using dic_preparation)
@@ -7,22 +7,14 @@ function varargout = stepD_2DDIC(varargin)
 %   3. Executing tracking analysis for both cameras
 %
 % Parameters:
-%   varargin: Variable input arguments including:
-%     - baseDataPath: Base path for data files
-%     - baseResultPath: Base path for results
-%     - subject: Subject identifier
-%     - material: Material type
-%     - trial: Trial number
-%     - stereopair: Stereo pair number
-%     - phase: Analysis phase
-%     - jump: Frame jump size
-%     - idxstart_set: Start index
-%     - idxend_set: End index
-%     - showvisu: Visualization flag
-%     - savedata: Save data flag
-%     - reftrial_setmanual: Manual reference trial
-%     - param_filt_im: Image filtering parameters
-%     - automatic_process: Automatic processing flag
+%   base_data_path: Base path for data files
+%   base_result_path: Base path for results
+%
+% Note:
+%   All other parameters are loaded from:
+%   - global_param.m: Global configuration
+%   - dic_param.m: DIC-specific parameters
+%   - plot_param.m: Visualization settings
 %
 % Returns:
 %   varargout: Optional output structure containing:
@@ -37,8 +29,13 @@ fprintf('-------------------------------------------\n');
 fprintf('-------------------------------------------\n');
 fprintf('Digital Image Correlation analysis launch\n');
 
+% Load parameter files
+run('../global_param.m');
+run('../dic_param.m');
+run('../plot_param.m');
+
 % Prepare data and parameters
-prep_params = dic_preparation(varargin{:});
+prep_params = dic_preparation(base_data_path, base_result_path);
 
 % Perform matching analysis
 matching_results = dic_matching(prep_params);
@@ -51,7 +48,7 @@ configs{2}.mask = matching_results.refmask_trial_matched;
 configs{2}.initial_seed = matching_results.initial_seed_point_set2.pw;
 
 for config = configs
-    perform_tracking(config, prep_params.base_parameters, prep_params.step1_parameters);
+    perform_tracking(config);
 end
 
 % Return any output arguments if needed

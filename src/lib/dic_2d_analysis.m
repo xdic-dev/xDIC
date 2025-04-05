@@ -1,4 +1,13 @@
-function output = dic_2d_analysis(trial_target, data_path, dic_path, subject_id, phase_id, material, num_pair, nfcond_set, spddxlcond_set, calib_folder_set, ref_trial_id, idx_frame_start, idx_frame_end, frame_jump, showvisu, debug_mode, automatic_process)
+function output = dic_2d_analysis(trial_target, data_path, dic_path)
+% DIC_2D_ANALYSIS Perform 2D Digital Image Correlation analysis
+%   This function performs the 2D DIC analysis for the given trials.
+%
+% Parameters:
+%   trial_target: Target trials to analyze
+%   data_path: Path to the data directory
+%   dic_path: Path to save DIC results
+%
+% All other parameters are loaded from parameter files
     fprintf('Begin of %s\n', mfilename);
     % Flatten all combinations (trial_jj, stereopair_kk)
     pairs_trials = combvec( 1:num_pair, trial_target)';
