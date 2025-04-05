@@ -54,23 +54,6 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'docs: update documentation'
 
-      - name: Upload documentation artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: documentation
-          path: docs/_build/html
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.DOCS_DEPLOY_KEY }}
-          external_repository: xdic-dev/xdic-dev.github.io
-          publish_branch: main
-          publish_dir: ./docs/_build/html
-          force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'docs: update documentation'
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
