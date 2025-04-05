@@ -4,7 +4,7 @@ About
 
 Project Purpose and Overview
 ----------------------------
-multiDIC is a MATLAB tool for 3D reconstruction and deformation analysis, primarily for analyzing finger movements. This work is part of the research project "3D Reconstruction of Fingertip Movements Using Multi-Camera Systems" at INMA/ICTEAM. The system supports multiple stereo camera pairs and provides comprehensive tools for Digital Image Correlation (DIC) analysis.
+multiDIC is a MATLAB tool for 3D reconstruction and deformation analysis, primarily for analyzing finger movements. This work is part of the research project "3D Reconstruction of Fingertip Movements Using Multi-Camera Systems". The system supports multiple stereo camera pairs and provides comprehensive tools for Digital Image Correlation (DIC) analysis.
 
 Contributors
 ------------
