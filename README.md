@@ -1,5 +1,8 @@
 # xDIC: Fingertip 3D Reconstruction
 
+[![Documentation](https://github.com/xdic-dev/xdic-dev.github.io/actions/workflows/docs.yml/badge.svg)](https://xdic-dev.github.io)
+
+
 ## How to run this app?
 
 First modify the configuration files `src/global_param` and `src/dic_param`.
