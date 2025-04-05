@@ -13,7 +13,7 @@
 [paper-url]: https://www.biorxiv.org/content/10.1101/2025.02.10.637366v1.full.pdf
 
 [build-img]: https://github.com/xdic-dev/xdic-dev.github.io/actions/workflows/docs.yml/badge.svg?branch=main
-[build-url]: https://github.com/xdic-dev/xdic-dev.github.io/actions?query=workflow%3ADocumentation
+[build-url]: https://github.com/xdic-dev/xdic/actions?query=workflow%3ADocumentation
 [codecov-img]: https://codecov.io/github/xdic-dev/xdic-dev.github.io/coverage.svg
 [codecov-url]: https://app.codecov.io/github/xdic-dev/xdic-dev.github.io
 
